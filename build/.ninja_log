@@ -1,9 +1,0 @@
-# ninja log v5
-3	2093	6482293434455596	CMakeFiles/foinfo.dir/src/main.cpp.obj	fd6e0d55b2a201d7
-2094	2263	6482293435840301	foinfo.exe	eb6327f0a6e6778b
-1352	1896	6481872802410969	3rdparty/fmt/fmtd.lib	957a74c5db039d14
-6	1260	6481872797080921	3rdparty/fmt/CMakeFiles/fmt.dir/src/os.cc.obj	411ab7a2da57065a
-11	1351	6481872797981125	3rdparty/fmt/CMakeFiles/fmt.dir/src/format.cc.obj	16a1f52f27ea0708
-6	1344	6482280074839811	3rdparty/argparse/CMakeFiles/fmt.dir/src/format.cc.obj	10884553da63b978
-9	1249	6482280073915730	3rdparty/argparse/CMakeFiles/fmt.dir/src/os.cc.obj	35713aa017cd809
-7	148	6482282239996199	3rdparty/argparse/fmtd.lib	bf03f84e07953f43
