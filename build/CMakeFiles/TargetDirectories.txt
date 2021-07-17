@@ -1,0 +1,6 @@
+D:/Code/github.com/foinfo/build/CMakeFiles/foinfo.dir
+D:/Code/github.com/foinfo/build/CMakeFiles/edit_cache.dir
+D:/Code/github.com/foinfo/build/CMakeFiles/rebuild_cache.dir
+D:/Code/github.com/foinfo/build/3rdparty/fmt/CMakeFiles/edit_cache.dir
+D:/Code/github.com/foinfo/build/3rdparty/fmt/CMakeFiles/fmt.dir
+D:/Code/github.com/foinfo/build/3rdparty/fmt/CMakeFiles/rebuild_cache.dir

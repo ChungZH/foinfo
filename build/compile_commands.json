@@ -1,0 +1,17 @@
+[
+{
+  "directory": "D:/Code/github.com/foinfo/build",
+  "command": "C:\\Users\\chungzh\\scoop\\shims\\clang++.exe -DFMT_LOCALE -I../3rdparty/fmt/include -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++17 -o CMakeFiles\\foinfo.dir\\src\\main.cpp.obj -c D:\\Code\\github.com\\foinfo\\src\\main.cpp",
+  "file": "D:/Code/github.com/foinfo/src/main.cpp"
+},
+{
+  "directory": "D:/Code/github.com/foinfo/build",
+  "command": "C:\\Users\\chungzh\\scoop\\shims\\clang++.exe -DFMT_LOCALE -I../3rdparty/fmt/include -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++17 -o 3rdparty\\fmt\\CMakeFiles\\fmt.dir\\src\\format.cc.obj -c D:\\Code\\github.com\\foinfo\\3rdparty\\fmt\\src\\format.cc",
+  "file": "D:/Code/github.com/foinfo/3rdparty/fmt/src/format.cc"
+},
+{
+  "directory": "D:/Code/github.com/foinfo/build",
+  "command": "C:\\Users\\chungzh\\scoop\\shims\\clang++.exe -DFMT_LOCALE -I../3rdparty/fmt/include -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++17 -o 3rdparty\\fmt\\CMakeFiles\\fmt.dir\\src\\os.cc.obj -c D:\\Code\\github.com\\foinfo\\3rdparty\\fmt\\src\\os.cc",
+  "file": "D:/Code/github.com/foinfo/3rdparty/fmt/src/os.cc"
+}
+]
