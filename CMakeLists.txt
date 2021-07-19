@@ -11,6 +11,8 @@ include_directories(3rdparty/CLI11)
 
 set(SOURCES
     src/main.cpp
+    src/foinfo.hpp
+    src/foinfo.cpp
 )
 
 add_executable(foinfo ${SOURCES})
