@@ -23,10 +23,26 @@ int parsePath(std::string& pathStr)
 FICore::FICore(const std::string& pathStr)
 {
     m_path = pathStr;
-    fmt::print(fg(fmt::color::steel_blue), "Directory: {}", pathStr);
+    fmt::print(fg(fmt::color::dim_gray), "Directory: {}\n", pathStr);
+    printInfo();
 }
 
 FICore::~FICore()
 {
+}
+
+void FICore::printInfo()
+{
+    fmt::print("{:<23}{}\n", "Last Write Time", "Name");
+    for (auto& it : fs::directory_iterator(m_path)) {
+        // How to convert std::filesystem::file_time_type to time_t?
+        // SO: https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
+        auto lastWriteTime = fs::last_write_time(it.path());
+        const auto ticks = lastWriteTime.time_since_epoch().count() - fs::__std_fs_file_time_epoch_adjustment;
+        const auto tp = system_clock::time_point(system_clock::time_point::duration(ticks));
+        std::time_t tt = system_clock::time_point::clock::to_time_t(tp);
+        const auto output = fmt::format("{:%Y-%m-%d %H:%M:%S}", fmt::localtime(tt));
+        fmt::print(fg(fmt::color::steel_blue), "{:<23}{}\n", output, it.path().filename().string());
+    }
 }
 }
