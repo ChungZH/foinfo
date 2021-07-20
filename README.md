@@ -1,10 +1,8 @@
 # lspro
 
-> Pro version ls. Written in C++ 17.
+<img align="right" src="assets/lsp-logo.png" width="150"/>
 
-<div align="right">
-<img src="assets/lsp-logo.png" width="150"/>
-</div>
+> Pro version ls. Written in C++ 17.
 
 ## Build
 
