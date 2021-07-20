@@ -33,7 +33,7 @@ FICore::~FICore()
 
 void FICore::printInfo()
 {
-    fmt::print("{:<23}{}\n", "Last Write Time", "Name");
+    fmt::print(fmt::emphasis::underline, "{:<22}{:<8}{}\n", "Last Write Time", "Size", "Name");
     for (auto& it : fs::directory_iterator(m_path)) {
         // How to convert std::filesystem::file_time_type to time_t?
         // SO: https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
@@ -42,7 +42,7 @@ void FICore::printInfo()
         const auto tp = system_clock::time_point(system_clock::time_point::duration(ticks));
         std::time_t tt = system_clock::time_point::clock::to_time_t(tp);
         const auto output = fmt::format("{:%Y-%m-%d %H:%M:%S}", fmt::localtime(tt));
-        fmt::print(fg(fmt::color::steel_blue), "{:<23}{}\n", output, it.path().filename().string());
+        fmt::print(fg(fmt::color::steel_blue), "{:<22}{:<8}{}\n", output, fs::file_size(it.path()), it.path().filename().string());
     }
 }
 }
