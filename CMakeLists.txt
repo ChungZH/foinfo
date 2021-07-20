@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.1)
 
-project(foinfo)
+project(lspro)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -11,10 +11,10 @@ include_directories(3rdparty/CLI11)
 
 set(SOURCES
     src/main.cpp
-    src/foinfo.hpp
-    src/foinfo.cpp
+    src/lspro.hpp
+    src/lspro.cpp
 )
 
-add_executable(foinfo ${SOURCES})
+add_executable(lspro ${SOURCES})
 
-target_link_libraries(foinfo fmt::fmt)
+target_link_libraries(lspro fmt::fmt)

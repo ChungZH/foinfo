@@ -1,6 +1,6 @@
-#include "foinfo.hpp"
+#include "lspro.hpp"
 
-namespace FoInfo {
+namespace LsPro {
 
 int parsePath(std::string& pathStr)
 {
@@ -12,7 +12,7 @@ int parsePath(std::string& pathStr)
         return false;
     }
     if (!fs::is_directory(tempPath)) {
-        std::cerr << "what(): FoInfo::parsePath: The path must not point to a file. : "
+        std::cerr << "what(): LsPro::parsePath: The path must not point to a file. : "
                   << "\"" << tempPath.string() << "\"" << std::endl;
         return false;
     }
@@ -20,18 +20,18 @@ int parsePath(std::string& pathStr)
     return true;
 }
 
-FICore::FICore(const std::string& pathStr)
+LPCore::LPCore(const std::string& pathStr)
 {
     m_path = pathStr;
     fmt::print(fg(fmt::color::dim_gray), "Directory: {}\n", pathStr);
     printInfo();
 }
 
-FICore::~FICore()
+LPCore::~LPCore()
 {
 }
 
-void FICore::printInfo()
+void LPCore::printInfo()
 {
     fmt::print(fmt::emphasis::underline, "{:<22}{:<8}{}\n", "Last Write Time", "Size", "Name");
     for (auto& it : fs::directory_iterator(m_path)) {

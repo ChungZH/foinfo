@@ -1,12 +1,19 @@
-# foinfo
+# lspro
 
-> Display information about a folder. Written in C++ 17.
+> Pro version ls. Written in C++ 17.
 
 ## Features
 
 ## Installation
 
 ## Building the Code
+
+```bash
+mkdir build
+cd build
+cmake .. 
+cmake --build .
+```
 
 ## LICENSE
 

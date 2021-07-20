@@ -13,7 +13,7 @@ namespace fs = std::filesystem;
 using namespace std::chrono_literals;
 using namespace std::chrono;
 
-namespace FoInfo {
+namespace LsPro {
 
 int parsePath(std::string& pathStr);
 /*
@@ -34,10 +34,10 @@ struct HumanReadable {
     }
 };*/
 
-class FICore {
+class LPCore {
 public:
-    FICore(const std::string& pathStr);
-    ~FICore();
+    LPCore(const std::string& pathStr);
+    ~LPCore();
 
     void printInfo();
 
@@ -45,6 +45,6 @@ private:
     fs::path m_path;
 };
 
-} // namespace FoInfo
+} // namespace LsPro
 
-using namespace FoInfo;
+using namespace LsPro;
