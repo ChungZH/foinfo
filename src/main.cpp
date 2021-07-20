@@ -15,10 +15,13 @@ int main(int argc, char** argv)
     string path = ".";
     app.add_option("path,-p,--path", path, "Specify the path to a location. By default, it is the current directory (.).");
 
+    bool recurse = false;
+    app.add_flag("-r, --recurse", recurse, "Recurse into directories.");
+
     CLI11_PARSE(app, argc, argv);
 
     LsPro::parsePath(path);
-    LPCore fic(path);
+    LPCore fic(path, recurse);
 
     return 0;
 }

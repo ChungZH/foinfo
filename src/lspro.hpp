@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <iostream>
 #include <string>
+#include <strstream>
 
 #include <fmt/chrono.h>
 #include <fmt/color.h>
@@ -16,33 +17,20 @@ using namespace std::chrono;
 namespace LsPro {
 
 int parsePath(std::string& pathStr);
-/*
-struct HumanReadable {
-    uintmax_t size {};
-
-    template <typename Os>
-    friend Os& operator<<(Os& os, HumanReadable hr)
-    {
-        int i {};
-        double mantissa = hr.size;
-        for (; mantissa >= 1024.; ++i) {
-            mantissa /= 1024.;
-        }
-        mantissa = std::ceil(mantissa * 10.) / 10.;
-        os << mantissa << "BKMGTPE"[i];
-        return i == 0 ? os : os << "B (" << hr.size << ')';
-    }
-};*/
 
 class LPCore {
 public:
-    LPCore(const std::string& pathStr);
+    LPCore(const std::string& pathStr, const bool recurseFlag);
     ~LPCore();
+
+private:
+    std::string parseFileSize(uintmax_t fileSize);
 
     void printInfo();
 
 private:
     fs::path m_path;
+    bool m_recurseFlag;
 };
 
 } // namespace LsPro
