@@ -2,11 +2,11 @@
 
 > Pro version ls. Written in C++ 17.
 
-## Features
+<div align="right">
+<img src="assets/lsp-logo.png" width="150"/>
+</div>
 
-## Installation
-
-## Building the Code
+## Build
 
 ```bash
 mkdir build
@@ -14,6 +14,10 @@ cd build
 cmake .. 
 cmake --build .
 ```
+
+## Install
+
+## Command-line options
 
 ## LICENSE
 
