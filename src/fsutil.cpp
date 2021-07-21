@@ -43,4 +43,20 @@ std::string getReadableFileSize(const fs::path& path)
     return i == 0 ? std::to_string(fileSize) : ret;
 }
 
+std::string getFilePermissions(const fs::path& path)
+{
+    fs::perms p(fs::status(path).permissions());
+    std::string ret;
+    ret += (is_directory(path) ? "d" : ".");
+    ret += ((p & fs::perms::owner_read) != fs::perms::none ? "r" : "-");
+    ret += ((p & fs::perms::owner_write) != fs::perms::none ? "w" : "-");
+    ret += ((p & fs::perms::owner_exec) != fs::perms::none ? "x" : "-");
+    ret += ((p & fs::perms::group_read) != fs::perms::none ? "r" : "-");
+    ret += ((p & fs::perms::group_write) != fs::perms::none ? "w" : "-");
+    ret += ((p & fs::perms::group_exec) != fs::perms::none ? "x" : "-");
+    ret += ((p & fs::perms::others_read) != fs::perms::none ? "r" : "-");
+    ret += ((p & fs::perms::others_write) != fs::perms::none ? "w" : "-");
+    ret += ((p & fs::perms::others_exec) != fs::perms::none ? "x" : "-");
+    return ret;
+}
 }

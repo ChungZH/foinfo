@@ -14,15 +14,18 @@ int main(int argc, char** argv)
     CLI::App app { "lspro, pro version ls." };
 
     string path = ".";
-    app.add_option("path,-p,--path", path, "Specify the path to a location. By default, it is the current directory (.).");
+    app.add_option("path, -p, --path", path, "Specify the path to a location. By default, it is the current directory (.).");
 
     bool recurse = false;
-    app.add_flag("-r, --recurse", recurse, "Recurse into directories.");
+    app.add_flag("-r, --recurse", recurse, "Print directories recursively.");
+
+    bool tree = false;
+    app.add_flag("-t, --tree", tree, "Print directories as a tree.");
 
     CLI11_PARSE(app, argc, argv);
 
     LsPro::FsUtil::parsePath(path);
-    LPCore fic(path, recurse);
+    LPCore fic(path, recurse, tree);
 
     return 0;
 }
