@@ -26,7 +26,11 @@ public:
 private:
     std::string parseFileSize(uintmax_t fileSize);
 
+    template <typename T>
+    std::string getFileOutput(const fs::path rootPath, const T dirEntry);
+
     void printInfo();
+    void printInfoRcsly();
 
 private:
     fs::path m_path;

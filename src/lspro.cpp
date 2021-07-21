@@ -25,7 +25,10 @@ LPCore::LPCore(const std::string& pathStr, const bool recurseFlag)
     , m_recurseFlag(recurseFlag)
 {
     fmt::print(fg(fmt::color::dim_gray), "Directory: {}\n", pathStr);
-    printInfo();
+    if (!m_recurseFlag)
+        printInfo();
+    else
+        printInfoRcsly();
 }
 
 LPCore::~LPCore()
@@ -43,18 +46,34 @@ std::string LPCore::parseFileSize(uintmax_t fileSize)
     return i == 0 ? std::to_string(fileSize) : ret;
 }
 
+template <typename T>
+std::string LPCore::getFileOutput(const fs::path rootPath, const T dirEntry)
+{
+    // How to convert std::filesystem::file_time_type to time_t?
+    // SO: https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
+    auto lastWriteTime = fs::last_write_time(dirEntry.path());
+    const auto ticks = lastWriteTime.time_since_epoch().count() - fs::__std_fs_file_time_epoch_adjustment;
+    const auto tp = system_clock::time_point(system_clock::time_point::duration(ticks));
+    std::time_t tt = system_clock::time_point::clock::to_time_t(tp);
+    const auto output = fmt::format("{:%Y-%m-%d %H:%M:%S}", fmt::localtime(tt));
+
+    const std::string name = dirEntry.path().string().substr(rootPath.string().length() + 1);
+    return fmt::format("{:<21}{:<9}{}\n", output, parseFileSize(fs::file_size(dirEntry.path())), name);
+}
+
 void LPCore::printInfo()
 {
     fmt::print(fmt::emphasis::underline, "{:<21}{:<9}{}\n", "Last Write Time", "Size", "Name");
     for (auto& it : fs::directory_iterator(m_path)) {
-        // How to convert std::filesystem::file_time_type to time_t?
-        // SO: https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
-        auto lastWriteTime = fs::last_write_time(it.path());
-        const auto ticks = lastWriteTime.time_since_epoch().count() - fs::__std_fs_file_time_epoch_adjustment;
-        const auto tp = system_clock::time_point(system_clock::time_point::duration(ticks));
-        std::time_t tt = system_clock::time_point::clock::to_time_t(tp);
-        const auto output = fmt::format("{:%Y-%m-%d %H:%M:%S}", fmt::localtime(tt));
-        fmt::print(fg(fmt::color::steel_blue), "{:<21}{:<9}{}\n", output, parseFileSize(fs::file_size(it.path())), it.path().filename().string());
+        fmt::print(fg(fmt::color::steel_blue), getFileOutput(m_path, it));
+    }
+}
+
+void LPCore::printInfoRcsly()
+{
+    fmt::print(fmt::emphasis::underline, "{:<21}{:<9}{}\n", "Last Write Time", "Size", "Name");
+    for (auto& it : fs::recursive_directory_iterator(m_path)) {
+        fmt::print(fg(fmt::color::steel_blue), getFileOutput(m_path, it));
     }
 }
 
