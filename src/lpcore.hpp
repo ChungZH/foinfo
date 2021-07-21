@@ -10,13 +10,13 @@
 #include <fmt/color.h>
 #include <fmt/core.h>
 
+#include "fsutil.hpp"
+
 namespace fs = std::filesystem;
 using namespace std::chrono_literals;
 using namespace std::chrono;
 
 namespace LsPro {
-
-int parsePath(std::string& pathStr);
 
 class LPCore {
 public:
@@ -24,8 +24,6 @@ public:
     ~LPCore();
 
 private:
-    std::string parseFileSize(uintmax_t fileSize);
-
     template <typename T>
     std::string getFileOutput(const fs::path rootPath, const T dirEntry);
 

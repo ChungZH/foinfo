@@ -3,7 +3,8 @@
 #include <iostream>
 #include <string>
 
-#include "lspro.hpp"
+#include "fsutil.hpp"
+#include "lpcore.hpp"
 
 using std::string;
 namespace fs = std::filesystem;
@@ -20,7 +21,7 @@ int main(int argc, char** argv)
 
     CLI11_PARSE(app, argc, argv);
 
-    LsPro::parsePath(path);
+    LsPro::FsUtil::parsePath(path);
     LPCore fic(path, recurse);
 
     return 0;

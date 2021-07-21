@@ -11,8 +11,10 @@ include_directories(3rdparty/CLI11)
 
 set(SOURCES
     src/main.cpp
-    src/lspro.hpp
-    src/lspro.cpp
+    src/lpcore.hpp
+    src/lpcore.cpp
+    src/fsutil.hpp
+    src/fsutil.cpp
 )
 
 add_executable(lspro ${SOURCES})
