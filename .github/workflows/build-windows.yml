@@ -13,11 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Ninja
-      uses: ashutoshvarma/setup-ninja@master
-      with:
-        # ninja version to download. Default: 1.10.0
-        version: 1.10.0
+    - name: Get latest CMake and ninja
+      uses: lukka/get-cmake@latest 
     - name: build
       run: |
         mkdir build
