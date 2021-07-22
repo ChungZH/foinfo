@@ -22,10 +22,13 @@ int main(int argc, char** argv)
     bool tree = false;
     app.add_flag("-t, --tree", tree, "Print directories as a tree.");
 
+    bool nameOnly = false;
+    app.add_flag("--name", nameOnly, "Print names only.");
+
     CLI11_PARSE(app, argc, argv);
 
     LsPro::FsUtil::parsePath(path);
-    LPCore fic(path, recurse, tree);
+    LPCore fic(path, recurse, tree, nameOnly);
 
     return 0;
 }

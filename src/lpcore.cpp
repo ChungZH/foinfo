@@ -2,10 +2,11 @@
 
 namespace LsPro {
 
-LPCore::LPCore(const std::string& pathStr, const bool recurseFlag, const bool treeFlag)
+LPCore::LPCore(const std::string& pathStr, const bool recurseFlag, const bool treeFlag, const bool nameOnlyFlag)
     : m_path(pathStr)
     , m_recurseFlag(recurseFlag)
     , m_treeFlag(treeFlag)
+    , m_nameOnlyFlag(nameOnlyFlag)
 {
     initDisplayInfo();
     fmt::print(fg(fmt::color::dim_gray), "Directory: {}\n", pathStr);
@@ -56,14 +57,34 @@ void LPCore::printFileInfo(const fs::path& rootPath, const fs::directory_entry& 
 
 void LPCore::initDisplayInfo()
 {
+    if (m_nameOnlyFlag)
+        return;
     displayInfo.push_back(FileInfoType::Permissions);
     displayInfo.push_back(FileInfoType::LastWriteTime);
     displayInfo.push_back(FileInfoType::FileSize);
 }
 
+void LPCore::printInfoType()
+{
+    for (auto it : displayInfo) {
+        switch (it) {
+        case FileInfoType::Permissions:
+            fmt::print(fmt::emphasis::underline, "{:<13}", "Permissions");
+            break;
+        case FileInfoType::LastWriteTime:
+            fmt::print(fmt::emphasis::underline, "{:<21}", "Last Write Time");
+            break;
+        case FileInfoType::FileSize:
+            fmt::print(fmt::emphasis::underline, "{:<9}", "Size");
+            break;
+        }
+    }
+    fmt::print(fmt::emphasis::underline, "{}\n", "Name");
+}
+
 void LPCore::printInfo()
 {
-    fmt::print(fmt::emphasis::underline, "{:<13}{:<21}{:<9}{}\n", "Permissions", "Last Write Time", "Size", "Name");
+    printInfoType();
     for (auto& it : fs::directory_iterator(m_path)) {
         printFileInfo(m_path, it);
     }
@@ -72,7 +93,7 @@ void LPCore::printInfo()
 void LPCore::printInfoRcsly(const fs::path& curPath, int depth)
 {
     if (depth == 0) {
-        fmt::print(fmt::emphasis::underline, "{:<13}{:<21}{:<9}{}\n", "Permissions", "Last Write Time", "Size", "Name");
+        printInfoType();
         if (m_treeFlag)
             printFileInfo(curPath, fs::directory_entry(curPath), depth, true);
     }

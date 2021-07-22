@@ -19,7 +19,7 @@ using namespace std::chrono;
 namespace LsPro {
 class LPCore {
 public:
-    LPCore(const std::string& pathStr, const bool recurseFlag, const bool treeFlag);
+    LPCore(const std::string& pathStr, const bool recurseFlag, const bool treeFlag, const bool nameOnlyFlag);
     ~LPCore();
 
 private:
@@ -27,6 +27,7 @@ private:
 
     void initDisplayInfo();
 
+    void printInfoType();
     void printInfo();
     void printInfoRcsly(const fs::path& curPath, int depth);
 
@@ -43,6 +44,7 @@ private:
     fs::path m_path;
     bool m_recurseFlag;
     bool m_treeFlag;
+    bool m_nameOnlyFlag;
 };
 
 } // namespace LsPro
