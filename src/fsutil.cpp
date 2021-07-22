@@ -24,6 +24,8 @@ time_t getFileLastWriteTime(const fs::path& path)
 {
     // How to convert std::filesystem::file_time_type to time_t?
     // SO: https://stackoverflow.com/questions/61030383/how-to-convert-stdfilesystemfile-time-type-to-time-t
+
+    // Can't work on gcc ?!
     auto lastWriteTime = fs::last_write_time(path);
     const auto ticks = lastWriteTime.time_since_epoch().count() - fs::__std_fs_file_time_epoch_adjustment;
     const auto tp = system_clock::time_point(system_clock::time_point::duration(ticks));

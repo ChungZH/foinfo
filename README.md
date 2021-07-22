@@ -2,6 +2,8 @@
 
 <img align="right" src="assets/lsp-logo.png" width="150"/>
 
+[![Build on Ubuntu Linux](https://github.com/ChungZH/lspro/actions/workflows/build-ubuntu-linux.yml/badge.svg)](https://github.com/ChungZH/lspro/actions/workflows/build-ubuntu-linux.yml)
+
 > Pro version ls. Written in C++ 17.
 
 ## Build
