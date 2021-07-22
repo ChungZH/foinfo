@@ -13,13 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Setup Ninja
+      uses: ashutoshvarma/setup-ninja@master
+      with:
+        # ninja version to download. Default: 1.10.0
+        version: 1.10.0
     - name: build
       run: |
         mkdir build
         cd build
-        cmake ..
-        make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+        cmake .. -GNinja
+        cmake --build .
