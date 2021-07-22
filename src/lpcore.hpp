@@ -23,13 +23,12 @@ public:
     ~LPCore();
 
 private:
-    template <typename T>
-    std::string getFileOutput(const fs::path rootPath, const T dirEntry);
+    void printFileInfo(const fs::path& rootPath, const fs::directory_entry& dirEntry, const int treeDepth, const bool treeLastFlag);
 
     void initDisplayInfo();
 
     void printInfo();
-    void printInfoRcsly();
+    void printInfoRcsly(const fs::path& curPath, int depth);
 
 private:
     enum class FileInfoType {
