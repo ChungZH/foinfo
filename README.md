@@ -2,7 +2,7 @@
 
 <img align="right" src="assets/lsp-logo.png" width="150"/>
 
-[![Build on Ubuntu Linux](https://github.com/ChungZH/lspro/actions/workflows/build-ubuntu-linux.yml/badge.svg)](https://github.com/ChungZH/lspro/actions/workflows/build-ubuntu-linux.yml)
+[![Build on Ubuntu Linux](https://github.com/ChungZH/lspro/actions/workflows/build-ubuntu-linux.yml/badge.svg)](https://github.com/ChungZH/lspro/actions/workflows/build-ubuntu-linux.yml) [![Build on macOS (Clang)](https://github.com/ChungZH/lspro/actions/workflows/build-macos.yml/badge.svg)](https://github.com/ChungZH/lspro/actions/workflows/build-macos.yml)
 
 > Pro version ls. Written in C++ 17.
 
